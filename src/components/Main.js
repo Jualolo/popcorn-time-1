@@ -1,5 +1,6 @@
 import { useState } from "react";
 import movies from "../data/movies.json";
+import Movie from "../components/Movie"
 
 import "./Main.css";
 
@@ -39,23 +40,7 @@ function Main() {
 
             {moviesToDisplay.map((movieObj) => {
                 return(
-                    <div key={movieObj.id} className="card">
-                        <p>{movieObj.title}</p>
-                        <p>Rating: {movieObj.rating}</p>
-
-
-                        { movieObj.imgURL 
-                            ? <img src={movieObj.imgURL} /> 
-                            : <img src="https://dummyimage.com/182x268/ffffff/000000" />
-                        }
-
-
-                        { movieObj.rating > 8 && <p>RECOMMENDED</p>}
-
-                        <p>
-                            <button onClick={ () => {deleteMovie(movieObj.id)}}>Delete this movie</button>
-                        </p>
-                    </div>
+                    <Movie details={movieObj}/>
                 )
             })}
         </div>
